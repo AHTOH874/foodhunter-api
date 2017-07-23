@@ -10,18 +10,15 @@ import './lib/mongoose';
 const app = express();
 dotenv.config({ path: '.env' });
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(authentication);
 app.use('/graphql', graphqlHTTP({
-    graphiql: true,
+    formatError: (error) => process.env.NODE_ENV === 'development' ? error : { message: error.message },
+    graphiql: process.env.NODE_ENV === 'development',
     pretty: true,
-    schema,
-    formatError: (error) => process.env.NODE_ENV === 'development'
-        ? error
-        : { message: error.message }
+    schema
 }));
 
 app.listen(3000, () => {

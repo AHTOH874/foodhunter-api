@@ -1,17 +1,18 @@
-import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString, GraphQLObjectType } from 'graphql';
+import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 
 import { createJwtTokens, refreshJwtTokens } from '../../lib/jwt';
 
 import UserModel from '../../models/user';
 import AppModel from '../../models/app';
-import AuthType from './type';
+import AuthPayloadType from './type';
 
 export default {
     Authorization: {
-        type: AuthType,
+        type: AuthPayloadType,
+        description: 'Authorization (tokens to work with api)',
         args: {
             clientId: {
-                type: new GraphQLNonNull(GraphQLString)
+                type: new GraphQLNonNull(GraphQLID)
             },
             clientSecret: {
                 type: new GraphQLNonNull(GraphQLString)
@@ -40,10 +41,11 @@ export default {
         }
     },
     RefreshTokens: {
-        type: AuthType,
+        type: AuthPayloadType,
+        description: 'Refresh tokens: token and refreshToken',
         args: {
             clientId: {
-                type: new GraphQLNonNull(GraphQLString)
+                type: new GraphQLNonNull(GraphQLID)
             },
             clientSecret: {
                 type: new GraphQLNonNull(GraphQLString)

@@ -2,9 +2,9 @@ import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
 import AuthMutation from './auth/mutation';
 
-import UserMutation from './user/mutation'
 import UserQuery from './user/query';
 
+import AppMutation from './app/mutation';
 import AppQuery from './app/query';
 
 export default new GraphQLSchema({
@@ -12,7 +12,6 @@ export default new GraphQLSchema({
         name: 'Query',
         fields: {
             App: AppQuery.App,
-
             Users: UserQuery.Users,
             User: UserQuery.User,
             Me: UserQuery.Me,
@@ -23,6 +22,8 @@ export default new GraphQLSchema({
         fields: {
             Authorization: AuthMutation.Authorization,
             RefreshTokens: AuthMutation.RefreshTokens,
+
+            AppRefreshSecret: AppMutation.AppRefreshSecret
         }
     })
 });
