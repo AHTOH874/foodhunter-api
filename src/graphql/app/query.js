@@ -1,7 +1,7 @@
 import { GraphQLNonNull, GraphQLID } from 'graphql';
 
 import AppModel from '../../models/app';
-import AppType from './AppType'
+import AppType from './type'
 
 export default {
     App: {

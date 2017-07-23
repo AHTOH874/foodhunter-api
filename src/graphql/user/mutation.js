@@ -3,7 +3,7 @@ import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString, Grap
 
 import ClientModel from '../../models/app';
 import UserModel from '../../models/user';
-import UserType from './UserType'
+import UserType from './type'
 
 
 const TokenType = new GraphQLObjectType({

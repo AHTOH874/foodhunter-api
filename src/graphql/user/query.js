@@ -2,7 +2,7 @@ import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString } fro
 import graphqlFields from 'graphql-fields';
 
 import UserModel from '../../models/user';
-import UserType from './UserType'
+import UserType from './type'
 
 import { compose, authenticated } from '../../lib/permissions';
 

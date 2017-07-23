@@ -2,7 +2,7 @@ import { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLID } from 'gra
 import graphqlFields from 'graphql-fields';
 
 import UserModel from '../../models/user';
-import UserType from '../user/UserType';
+import UserType from '../user/type';
 
 export default new GraphQLObjectType({
     name: 'App',

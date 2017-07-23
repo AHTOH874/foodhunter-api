@@ -1,11 +1,11 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
-import AppQuery from './app/AppQuery';
+import AuthMutation from './auth/mutation';
 
-import UserMutation from './user/UserMutation'
-import UserQuery from './user/UserQuery';
+import UserMutation from './user/mutation'
+import UserQuery from './user/query';
 
-import AuthMutation from './auth/AuthMutation';
+import AppQuery from './app/query';
 
 export default new GraphQLSchema({
     query: new GraphQLObjectType({

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export const verifyJwtToken = (token, secret) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         jwt.verify(token, secret, (err, decoded) => {
             if(!err){
                 const { iat, exp, ...data } = decoded;
@@ -13,11 +13,11 @@ export const verifyJwtToken = (token, secret) => {
 
 export const createJwtTokens = async (data = {}, secret) => {
     const token = await jwt.sign(data, secret, {
-        expiresIn: '20m'
+        expiresIn: '1d'
     });
 
     const refreshToken = await jwt.sign(data, secret, {
-        expiresIn: '7d'
+        expiresIn: '2d'
     });
 
     return { token, refreshToken }
