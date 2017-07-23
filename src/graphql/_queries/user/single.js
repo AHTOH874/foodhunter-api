@@ -2,7 +2,7 @@ import { GraphQLID, GraphQLNonNull } from 'graphql';
 import graphqlFields from 'graphql-fields';
 
 import UserModel from '../../../models/user';
-import userType from '../../types/user';
+import userType from '../../_types/user';
 
 export default {
     type: userType,

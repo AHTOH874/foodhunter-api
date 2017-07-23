@@ -2,7 +2,7 @@ import { GraphQLList, GraphQLInt, GraphQLString } from 'graphql';
 import graphqlFields from 'graphql-fields';
 
 import UserModel from '../../../models/user';
-import userType from '../../types/user';
+import userType from '../../_types/user';
 
 export default {
     type: new GraphQLList(userType),

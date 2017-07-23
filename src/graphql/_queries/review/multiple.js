@@ -2,7 +2,7 @@ import { GraphQLList, GraphQLInt, GraphQLString, GraphQLID, GraphQLNonNull } fro
 import graphqlFields from 'graphql-fields';
 
 import ReviewModel from '../../../models/review';
-import reviewType from '../../types/review';
+import reviewType from '../../_types/review';
 
 export default {
     type: new GraphQLList(reviewType),
