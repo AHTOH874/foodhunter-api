@@ -7,14 +7,19 @@ import UserQuery from './user/query';
 import AppMutation from './app/mutation';
 import AppQuery from './app/query';
 
+import PlaceQuery from './place/query';
+
 export default new GraphQLSchema({
     query: new GraphQLObjectType({
         name: 'Query',
         fields: {
             App: AppQuery.App,
+
             Users: UserQuery.Users,
             User: UserQuery.User,
             Me: UserQuery.Me,
+
+            Place: PlaceQuery.Place
         }
     }),
     mutation: new GraphQLObjectType({

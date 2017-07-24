@@ -4,7 +4,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 
 import { authentication } from './lib/middleware';
-import schema from './graphql/index';
+import schema from './graphQL/index';
 import './lib/mongoose';
 
 const app = express();

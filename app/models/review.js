@@ -23,6 +23,9 @@ const reviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true
     }
+}, {
+    collection: 'reviews',
+    timestamps: true
 });
 
 export default mongoose.model('Review', reviewSchema);

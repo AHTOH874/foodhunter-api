@@ -30,12 +30,12 @@ const placeSchema = new Schema({
         enum: [1, 2, 3, 4, 5],
         default: 1
     },
-    types: [{
+    categories: [{
         type: Schema.Types.ObjectId,
         required: true,
-        ref: 'Type'
+        ref: 'Category'
     }],
-    creatorId: {
+    user_id: {
         type: Schema.Types.ObjectId,
         required: true
     },
@@ -44,6 +44,9 @@ const placeSchema = new Schema({
         enum: [1, 2, 3],
         default: 1
     }
+}, {
+    collection: 'places',
+    timestamps: true
 });
 
 export default mongoose.model('Place', placeSchema);

@@ -24,6 +24,9 @@ const appSchema =  new Schema({
     description: {
         type: String
     }
+}, {
+    collection: 'apps',
+    timestamps: true
 });
 
 appSchema.methods.checkSecret = function(secret) {

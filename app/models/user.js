@@ -30,6 +30,9 @@ const userSchema = new Schema({
             type: Date
         }
     }
+}, {
+    collection: 'users',
+    timestamps: true
 });
 
 userSchema.virtual('password').set(function(password){
@@ -41,7 +44,6 @@ userSchema.virtual('password').set(function(password){
 userSchema.methods.encryptPassword = function(password){
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
 };
-
 
 userSchema.methods.checkPassword = function(password) {
     return this.encryptPassword(password) === this.hashedPassword;

@@ -32,6 +32,6 @@ const photoSchema = new Schema({
             required: true
         }
     }
-});
+}, { collection: 'photos' });
 
 export default mongoose.model('Photo', photoSchema);
