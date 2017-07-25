@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node app/index.js",
-    "prestart": "babel src --out-dir dist",
+    "prestart": "babel app --out-dir dist",
     "start": "node dist/index.js"
   },
   "repository": {
