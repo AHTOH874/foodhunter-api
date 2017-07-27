@@ -1,13 +1,13 @@
 import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 import crypto from 'crypto';
 
-import AppModel from '../../models/app';
+import AppModel from '../../models/client';
 import AppType from './type';
 
 import { compose, authenticated } from '../../lib/permissions';
 
 export default {
-    AppRefreshSecret: {
+    ClientRefreshSecret: {
         type: AppType,
         description: 'App refresh secret',
         args: {

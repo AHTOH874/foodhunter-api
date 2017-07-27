@@ -3,7 +3,7 @@ import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 import { createJwtTokens, refreshJwtTokens } from '../../lib/jwt';
 
 import UserModel from '../../models/user';
-import AppModel from '../../models/app';
+import AppModel from '../../models/client';
 import AuthPayloadType from './type';
 
 export default {

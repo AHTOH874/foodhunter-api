@@ -4,8 +4,8 @@ import AuthMutation from './auth/mutation';
 
 import UserQuery from './user/query';
 
-import AppMutation from './app/mutation';
-import AppQuery from './app/query';
+import ClientMutation from './client/mutation';
+import ClientQuery from './client/query';
 
 import PlaceQuery from './place/query';
 
@@ -13,7 +13,7 @@ export default new GraphQLSchema({
     query: new GraphQLObjectType({
         name: 'Query',
         fields: {
-            App: AppQuery.App,
+            Client: ClientQuery.Client,
 
             Users: UserQuery.Users,
             User: UserQuery.User,
@@ -28,7 +28,7 @@ export default new GraphQLSchema({
             Authorization: AuthMutation.Authorization,
             RefreshTokens: AuthMutation.RefreshTokens,
 
-            AppRefreshSecret: AppMutation.AppRefreshSecret
+            ClientRefreshSecret: ClientMutation.ClientRefreshSecret
         }
     })
 });

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const appSchema =  new Schema({
+const clientSchema =  new Schema({
     user_id: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -25,12 +25,12 @@ const appSchema =  new Schema({
         type: String
     }
 }, {
-    collection: 'apps',
+    collection: 'clients',
     timestamps: true
 });
 
-appSchema.methods.checkSecret = function(secret) {
+clientSchema.methods.checkSecret = function(secret) {
     return this.secret === secret;
 };
 
-export default mongoose.model('App', appSchema);
+export default mongoose.model('Client', clientSchema);
