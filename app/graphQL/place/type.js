@@ -5,9 +5,11 @@ import {
 
 import CategoryModel from '../../models/category';
 import ReviewModel from '../../models/review';
+import UserModel from '../../models/user';
 
 import CategoryType from '../category/type';
 import ReviewType from '../review/type';
+import UserType from '../user/type';
 
 const LocationType = new GraphQLObjectType({
     name: 'loc',
@@ -34,14 +36,15 @@ export default new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLString)
         },
         loc: {
-            type: LocationType,
+            type: new GraphQLNonNull(LocationType),
             resolve: (root) => root.loc
         },
         rating: {
             type: new GraphQLNonNull(GraphQLInt)
         },
-        user_id: {
-            type: new GraphQLNonNull(GraphQLID)
+        creator: {
+            type: new GraphQLNonNull(UserType),
+            resolve: async (root) => await UserModel.findById(root.creator)
         },
         price: {
             type: new GraphQLNonNull(GraphQLInt)

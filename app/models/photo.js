@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const photoSchema = new Schema({
-    authorId: {
+    author: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'User'

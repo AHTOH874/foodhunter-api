@@ -35,9 +35,10 @@ const placeSchema = new Schema({
         required: true,
         ref: 'Category'
     }],
-    user_id: {
+    creator: {
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'User'
     },
     price: {
         type: Number,

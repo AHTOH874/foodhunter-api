@@ -7,7 +7,11 @@ import UserQuery from './user/query';
 import ClientMutation from './client/mutation';
 import ClientQuery from './client/query';
 
+import PlaceMutation from './place/mutation';
 import PlaceQuery from './place/query';
+
+import ReviewMutation from './review/mutation';
+import ReviewQuery from './review/query';
 
 export default new GraphQLSchema({
     query: new GraphQLObjectType({
@@ -19,7 +23,9 @@ export default new GraphQLSchema({
             User: UserQuery.User,
             Me: UserQuery.Me,
 
-            Place: PlaceQuery.Place
+            Place: PlaceQuery.Place,
+
+            Review: ReviewQuery.Review
         }
     }),
     mutation: new GraphQLObjectType({
@@ -28,7 +34,12 @@ export default new GraphQLSchema({
             Authorization: AuthMutation.Authorization,
             RefreshTokens: AuthMutation.RefreshTokens,
 
-            ClientRefreshSecret: ClientMutation.ClientRefreshSecret
+            ClientRefreshSecret: ClientMutation.ClientRefreshSecret,
+
+            PlaceCreate: PlaceMutation.Create,
+
+            ReviewCreate: ReviewMutation.Create,
+            ReviewRemove: ReviewMutation.Remove
         }
     })
 });
