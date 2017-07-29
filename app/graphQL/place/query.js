@@ -1,4 +1,4 @@
-import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString } from 'graphql';
+import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString, GraphQLFloat } from 'graphql';
 
 import PlaceModel from '../../models/place';
 import PlaceType from './type'
@@ -21,5 +21,20 @@ export default {
                 return new Error('Place not found');
             }
         })
+    },
+    PlacesMap: {
+        type: new GraphQLList(PlaceType),
+        args: {
+            fp: {
+                type: new GraphQLList(GraphQLFloat),
+                description: 'Coordinates of first point: latitude, longitude'
+            },
+            sp: {
+                type: new GraphQLList(GraphQLFloat),
+                description: 'Coordinates of second point: latitude, longitude'
+            }
+        },
+        resolve: authenticated(async (root, args) =>
+            await PlaceModel.find({ loc: { $geoWithin: { $box: [ args.fp, args.sp] }} }))
     }
 }

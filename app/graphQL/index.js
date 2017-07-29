@@ -24,6 +24,7 @@ export default new GraphQLSchema({
             Me: UserQuery.Me,
 
             Place: PlaceQuery.Place,
+            PlacesMap: PlaceQuery.PlacesMap,
 
             Reviews: ReviewQuery.Reviews,
             Review: ReviewQuery.Review

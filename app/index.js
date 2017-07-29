@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import graphqlHTTP from 'express-graphql';
 import bodyParser from 'body-parser';
 import express from 'express';
