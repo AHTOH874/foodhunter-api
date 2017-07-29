@@ -21,5 +21,17 @@ export default {
                 return new Error('Place not found');
             }
         })
+    },
+    Reviews: {
+        type: new GraphQLList(ReviewType),
+        args: {
+            id: {
+                name: 'id',
+                type: new GraphQLNonNull(GraphQLID),
+                description: 'Place id'
+            }
+        },
+        resolve: authenticated(async (root, { id }) =>
+            await ReviewModel.find({ placeId: id }))
     }
 }
