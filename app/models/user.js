@@ -1,6 +1,18 @@
 import mongoose, { Schema } from 'mongoose';
 import crypto from 'crypto';
 
+/**
+ * Переделать схему пользователя:
+ * authProviders: {
+ *    email: {
+ *      hashedPassword,
+ *      salt
+ *    },
+ *    facebook: {},
+ *    vk: {}
+ * }
+ */
+
 const userSchema = new Schema({
     email: {
         type: String,

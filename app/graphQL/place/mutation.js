@@ -2,6 +2,7 @@ import { GraphQLNonNull, GraphQLID, GraphQLString, GraphQLFloat, GraphQLInt, Gra
 
 import PlaceModel from '../../models/place';
 import PlaceType from './type';
+import pubsub from '../../lib/pubsub';
 
 import { authenticated } from '../../lib/permissions';
 
@@ -29,7 +30,10 @@ export default {
                 type: new GraphQLList(GraphQLID)
             }
         },
-        resolve: authenticated(async (root, { coordinates, ...data }, context, info) =>
-            await PlaceModel.create({ ...data, loc: { coordinates }, creator: context.user }))
+        resolve: authenticated(async (root, { coordinates, ...data }, context, info) => {
+            const place = await PlaceModel.create({ ...data, loc: { coordinates }, creator: context.user })
+            pubsub.publish('Link', { Link: place});
+            return place;
+        })
     }
 }
