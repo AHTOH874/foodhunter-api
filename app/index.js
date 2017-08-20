@@ -18,7 +18,9 @@ const app = express();
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 
-dotenv.config({ path: '.env' });
+dotenv.config({
+    path: __dirname + '/../.env'
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
