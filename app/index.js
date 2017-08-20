@@ -15,8 +15,8 @@ import './lib/mongoose';
 
 const app = express();
 
-var multipart = require('connect-multiparty');
-var multipartMiddleware = multipart();
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
 
 dotenv.config({
     path: __dirname + '/../.env'
