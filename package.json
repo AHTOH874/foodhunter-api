@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node app/index.js",
-    "prestart": "babel app --out-dirs --copy-files dist",
+    "prestart": "babel app --out-dir dist --copy-files",
     "start": "node dist/index.js"
   },
   "repository": {
@@ -19,7 +19,6 @@
     "body-parser": "^1.17.2",
     "cloudinary": "^1.9.0",
     "connect-multiparty": "^2.0.0",
-    "crypto": "0.0.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "graphql": "^0.10.5",
