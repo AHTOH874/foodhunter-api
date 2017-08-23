@@ -39,10 +39,6 @@ app.use(
     }))
 );
 
-app.use('/graphiql', graphiqlExpress({
-    endpointURL: '/graphql'
-}));
-
 const server = createServer(app);
 
 server.listen(process.env.PORT, () => {
