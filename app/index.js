@@ -11,6 +11,8 @@ import dotenv from 'dotenv';
 
 import { authentication, graphqlUpload } from './lib/middleware';
 import schema from './graphQL';
+
+import './lib/nodemailer';
 import './lib/mongoose';
 
 const app = express();

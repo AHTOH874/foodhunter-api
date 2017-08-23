@@ -13,6 +13,8 @@ import PlaceQuery from './place/query';
 import ReviewMutation from './review/mutation';
 import ReviewQuery from './review/query';
 
+import RegistrationMutation from './registration/mutation';
+
 export default new GraphQLSchema({
     query: new GraphQLObjectType({
         name: 'Query',
@@ -35,6 +37,8 @@ export default new GraphQLSchema({
         fields: {
             Authorization: AuthMutation.Authorization,
             RefreshTokens: AuthMutation.RefreshTokens,
+
+            Registration: RegistrationMutation.Registration,
 
             ClientRefreshSecret: ClientMutation.ClientRefreshSecret,
 

@@ -19,9 +19,13 @@ const userSchema = new Schema({
         unique: true,
         required: true
     },
-    name: {
+    username: {
         type: String,
+        unique: true,
         required: true
+    },
+    name: {
+        type: String
     },
     avatar: {
         type: String
@@ -33,6 +37,16 @@ const userSchema = new Schema({
     hashedPassword: {
         type: String,
         required: true
+    },
+    confirmedEmail: {
+        state: {
+            type: Boolean,
+            default: false
+        },
+        token: {
+            type: String,
+            default: crypto.randomBytes(32).toString('hex')
+        }
     },
     resetPassword: {
         token: {
