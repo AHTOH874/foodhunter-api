@@ -1,7 +1,7 @@
 import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 import crypto from 'crypto';
 
-import AppModel from '../../models/client';
+import AppModel from '../../models/ClientModel';
 import AppType from './type';
 
 import { compose, authenticated } from '../../lib/permissions';

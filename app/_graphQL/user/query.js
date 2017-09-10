@@ -1,6 +1,6 @@
 import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString } from 'graphql';
 
-import UserModel from '../../models/user';
+import UserModel from '../../models/UserModel';
 import UserType from './type'
 
 import { compose, authenticated } from '../../lib/permissions';

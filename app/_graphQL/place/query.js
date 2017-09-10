@@ -1,6 +1,6 @@
 import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString, GraphQLFloat } from 'graphql';
 
-import PlaceModel from '../../models/place';
+import PlaceModel from '../../models/PlaceModel';
 import PlaceType from './type'
 
 import { compose, authenticated } from '../../lib/permissions';

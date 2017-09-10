@@ -3,9 +3,9 @@ import {
     GraphQLID, GraphQLList, GraphQLFloat
 } from 'graphql';
 
-import CategoryModel from '../../models/category';
-import ReviewModel from '../../models/review';
-import UserModel from '../../models/user';
+import CategoryModel from '../../models/CategoryModel';
+import ReviewModel from '../../models/ReviewModel';
+import UserModel from '../../models/UserModel';
 
 import CategoryType from '../category/type';
 import ReviewType from '../review/type';

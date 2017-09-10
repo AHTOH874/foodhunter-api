@@ -1,16 +1,19 @@
 import mongoose from 'mongoose';
 mongoose.Promise = global.Promise;
 
-const connection = mongoose.connect('mongodb://localhost/foodhunter', {
+const connection = mongoose.connect(
+  `mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}`,
+  {
     useMongoClient: true
-});
+  }
+);
 
 connection
-    .on('error', (err) => {
-        console.error('MongoDB connection error', err);
-    })
-    .once('open', () => {
-        console.info('Mongoose connect');
-    });
+  .on('error', (err) => {
+    console.error('MongoDB connection error', err);
+  })
+  .once('open', () => {
+    console.info('Mongoose connect');
+  });
 
 export default mongoose;

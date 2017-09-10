@@ -4,7 +4,7 @@ import {
 } from 'graphql';
 
 
-import UserModel from '../../models/user';
+import UserModel from '../../models/UserModel';
 import UserType from '../user/type';
 
 export default new GraphQLObjectType({

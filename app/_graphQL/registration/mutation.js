@@ -1,7 +1,7 @@
 import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 
-import ClientModel from '../../models/client';
-import UserModel from '../../models/user';
+import ClientModel from '../../models/ClientModel';
+import UserModel from '../../models/UserModel';
 import RegistrationPayload from './type';
 
 import { sendEmail } from '../../lib/nodemailer';

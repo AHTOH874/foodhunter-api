@@ -1,8 +1,7 @@
 import { GraphQLNonNull, GraphQLID, GraphQLString, GraphQLFloat, GraphQLInt, GraphQLList, GraphQLInputObjectType } from 'graphql';
 
-import PlaceModel from '../../models/place';
+import PlaceModel from '../../models/PlaceModel';
 import PlaceType from './type';
-import pubsub from '../../lib/pubsub';
 
 import { authenticated } from '../../lib/permissions';
 
@@ -65,7 +64,6 @@ export default {
 
 
             const place = await PlaceModel.create({ ...data, loc: { coordinates }, creator: context.user })
-            pubsub.publish('Link', { Link: place});
             return place;
         })
     }

@@ -1,6 +1,6 @@
 import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 
-import ClientModel from '../../models/client';
+import ClientModel from '../../models/ClientModel';
 import ClientType from './type';
 
 import { authenticated } from '../../lib/permissions';

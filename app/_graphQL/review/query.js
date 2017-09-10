@@ -1,6 +1,6 @@
 import { GraphQLNonNull, GraphQLInt, GraphQLList, GraphQLID, GraphQLString } from 'graphql';
 
-import ReviewModel from '../../models/review';
+import ReviewModel from '../../models/ReviewModel';
 import ReviewType from './type'
 
 import { authenticated } from '../../lib/permissions';
