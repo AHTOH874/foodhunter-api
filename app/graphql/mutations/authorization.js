@@ -17,7 +17,8 @@ export default {
       type: new GraphQLNonNull(GraphQLString)
     },
     username: {
-      type: new GraphQLNonNull(GraphQLString)
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'Email or username'
     },
     password: {
       type: new GraphQLNonNull(GraphQLString)

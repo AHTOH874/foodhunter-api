@@ -5,6 +5,7 @@ export const authentication = async (req, res, next) => {
 
   if(token){
     const decoded = await verifyJwtToken(token, process.env.AUTH_SECRET);
+
     if(decoded && decoded.id && decoded.clientId){
       req.clientId = decoded.clientId;
       req.userId = decoded.id;

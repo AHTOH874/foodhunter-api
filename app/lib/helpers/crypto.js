@@ -11,23 +11,6 @@ export const createJwtToken = async (data = {}, secret, expiresIn) => {
 
 export const verifyJwtToken = (token, secret) => {
   return new Promise((resolve) => {
-    jwt.verify(token, secret, (err, decoded) => {
-      if(!err){
-        const { iat, exp, ...data } = decoded;
-        resolve(data);
-      } else resolve(null);
-    });
+    jwt.verify(token, secret, (err, decoded) => resolve(decoded));
   });
 }
-//
-//
-//
-// export const refreshJwtTokens = async (refreshToken, secret) => {
-//   const decoded = await verifyJwtToken(refreshToken, secret)
-//
-//   if(decoded){
-//     return await createJwtTokens(decoded, secret);
-//   } else {
-//     throw new Error('Refresh token invalid');
-//   }
-// }
