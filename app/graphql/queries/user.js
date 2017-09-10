@@ -1,4 +1,4 @@
-import {GraphQLNonNull, GraphQLID} from 'graphql';
+import { GraphQLNonNull, GraphQLID } from 'graphql';
 import UserModel from '../../models/UserModel';
 import UserType from '../types/UserType';
 
@@ -10,5 +10,10 @@ export default {
       type: new GraphQLNonNull(GraphQLID)
     }
   },
-  resolve: async (root, args, context, info) => await UserModel.findById(args.id)
+  resolve: async (root, { id }) => {
+    const user = await UserModel.findById(id);
+
+    if(!user) return new Error('User not found');
+    return user;
+  }
 }

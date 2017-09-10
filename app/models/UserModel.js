@@ -14,65 +14,64 @@ import crypto from 'crypto';
  */
 
 const userSchema = new Schema({
-    email: {
-        type: String,
-        unique: true,
-        required: true
+  email: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  username: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  name: {
+    type: String
+  },
+  avatar: {
+    type: String
+  },
+  salt: {
+    type: String,
+    required: true
+  },
+  hashedPassword: {
+    type: String,
+    required: true
+  },
+  confirmedEmail: {
+    state: {
+      type: Boolean,
+      default: false
     },
-    username: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    name: {
-        type: String
-    },
-    avatar: {
-        type: String
-    },
-    salt: {
-        type: String,
-        required: true
-    },
-    hashedPassword: {
-        type: String,
-        required: true
-    },
-    confirmedEmail: {
-        state: {
-            type: Boolean,
-            default: false
-        },
-        token: {
-            type: String,
-            default: crypto.randomBytes(32).toString('hex')
-        }
-    },
-    resetPassword: {
-        token: {
-            type: String,
-        },
-        expires: {
-            type: Date
-        }
+    token: {
+      type: String
     }
+  },
+  resetPassword: {
+    token: {
+      type: String,
+    },
+    expires: {
+      type: Date
+    }
+  }
 }, {
     collection: 'users',
     timestamps: true
 });
 
 userSchema.virtual('password').set(function(password){
-    this._plainPassword = password;
-    this.salt = crypto.randomBytes(128).toString('base64');
-    this.hashedPassword = this.encryptPassword(password);
+  this._plainPassword = password;
+  this.salt = crypto.randomBytes(128).toString('base64');
+  this.hashedPassword = this.encryptPassword(password);
 }).get(function(){ return this._plainPassword })
 
 userSchema.methods.encryptPassword = function(password){
-    return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
+  return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
 };
 
 userSchema.methods.checkPassword = function(password) {
-    return this.encryptPassword(password) === this.hashedPassword;
+  return this.encryptPassword(password) === this.hashedPassword;
 };
 
 export default mongoose.model('User', userSchema);

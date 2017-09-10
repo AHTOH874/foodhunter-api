@@ -1,4 +1,4 @@
-import {GraphQLNonNull, GraphQLID, GraphQLString} from 'graphql';
+import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 import AuthPayloadType from '../types/AuthPayloadType';
 
 export default {
