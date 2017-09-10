@@ -11,7 +11,7 @@ const mailer = nodemailer.createTransport({
   }
 });
 
-const options = {
+mailer.use('compile', hbs({
   viewEngine: {
     extname: '.hbs',
     layoutsDir: __dirname + '/../../views/email/',
@@ -20,9 +20,7 @@ const options = {
   },
   viewPath: __dirname + '/../../views/email/',
   extName: '.hbs'
-};
-
-mailer.use('compile', hbs(options));
+}));
 
 export const sendEmail = ({ template, subject, context, to}) => {
   return new Promise((resolve, reject) => {
