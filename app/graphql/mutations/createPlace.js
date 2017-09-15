@@ -1,4 +1,4 @@
-import { GraphQLNonNull, GraphQLID, GraphQLString, GraphQLFloat, GraphQLInt } from 'graphql';
+import { GraphQLList, GraphQLNonNull, GraphQLID, GraphQLString, GraphQLFloat, GraphQLInt } from 'graphql';
 
 import PlaceModel from '../../models/PlaceModel';
 import PlaceType from '../types/PlaceType';

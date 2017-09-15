@@ -21,6 +21,8 @@ require('./lib/mongoose');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/', (req, res) => res.send('api v1.0'));
+
 app.use(authentication);
 app.use('/graphql', cors(), graphqlHTTP(({ userId, clientApp, clientAppId }) => ({
   context: { userId, clientApp, clientAppId },
