@@ -3,17 +3,17 @@ import { createJwtToken, createToken } from '../../lib/helpers/crypto';
 import AuthPayloadType from '../types/AuthPayloadType';
 
 import RefreshTokenModel from '../../models/RefreshTokenModel';
-import ClientModel from '../../models/ClientModel';
+import ClientAppModel from '../../models/ClientAppModel';
 import UserModel from '../../models/UserModel';
 
 export default {
   type: AuthPayloadType,
   description: 'Authorization',
   args: {
-    clientId: {
+    clientAppId: {
       type: new GraphQLNonNull(GraphQLID)
     },
-    clientSecret: {
+    clientAppSecret: {
       type: new GraphQLNonNull(GraphQLString)
     },
     username: {
@@ -25,10 +25,10 @@ export default {
     }
   },
   async resolve(root, args){
-    const client = await ClientModel.findOne({ _id: args.clientId, secret: args.clientSecret });
+    const clientApp = await ClientAppModel.findOne({ _id: args.clientAppId, secret: args.clientAppSecret });
 
-    if(!client){
-      return new Error('Client data is not valid');
+    if(!clientApp){
+      return new Error('Client App data is not valid');
     }
 
     const user = await UserModel.findOne({
@@ -39,7 +39,7 @@ export default {
       return new Error('Username, Email or password is not valid');
     }
 
-    const dataRefreshToken = { userId: user._id, clientId: client._id };
+    const dataRefreshToken = { userId: user._id, clientAppId: args.clientAppId };
     await RefreshTokenModel.remove(dataRefreshToken);
 
     const refreshToken = await new RefreshTokenModel({
@@ -51,7 +51,7 @@ export default {
     }
 
     const token = createJwtToken(
-      { id: user._id, clientId: client._id },
+      { id: user._id, clientAppId: args.clientAppId },
       process.env.AUTH_SECRET,
       process.env.AUTH_TOKEN_EXPIRES
     );

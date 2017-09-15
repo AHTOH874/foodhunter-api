@@ -17,17 +17,14 @@ export const authUser = (resolver) => (parent, args, context, info) => {
   throw new Error('User is not authenticated');
 }
 
-// export const authClient = (resolver) => async (parent, { accessToken }) => {
-//   if(accessToken) {
-//     const client = await ClientModel.findOne({ accessToken });
-//
-//     if(!client){
-//       return new Error('Client not found');
-//     }
-//
-//     context.clientId =
-//     return resolver(parent, args, context, info);
-//   }
-//
-//   throw new Error('Invalid client');
-// }
+/**
+ * Check client
+ * @param resolver
+ */
+export const authClientApp = (resolver) => (parent, args, context, info) => {
+  if(context.clientApp){
+    return resolver(parent, args, context, info);
+  }
+
+  throw new Error('Client App is not recognized');
+};

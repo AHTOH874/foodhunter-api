@@ -3,7 +3,7 @@ import { createJwtToken, createToken } from '../../lib/helpers/crypto';
 import AuthPayloadType from '../types/AuthPayloadType';
 
 import RefreshTokenModel from '../../models/RefreshTokenModel';
-import ClientModel from '../../models/ClientModel';
+import ClientAppModel from '../../models/ClientAppModel';
 
 export default {
   type: AuthPayloadType,
@@ -20,10 +20,10 @@ export default {
     }
   },
   async resolve(root, args){
-    const client = await ClientModel.findOne({ _id: args.clientId, secret: args.clientSecret });
+    const clientApp = await ClientAppModel.findOne({ _id: args.clientAppId, secret: args.clientAppSecret });
 
-    if(!client){
-      return new Error('Client data is not valid');
+    if(!clientApp){
+      return new Error('Client App data is not valid');
     }
 
     const receivedRefreshToken = await RefreshTokenModel.findOne({ token: args.refreshToken });
@@ -31,12 +31,12 @@ export default {
     if(
       !receivedRefreshToken  ||
       !receivedRefreshToken.isValid() ||
-      !client._id.equals(receivedRefreshToken.clientId)
+      !args.clientAppId.equals(receivedRefreshToken.clientAppId)
     ){
       return new Error('Refresh token not found or expires');
     }
 
-    const dataRefreshToken = { clientId: client._id, userId: receivedRefreshToken.userId };
+    const dataRefreshToken = { clientAppId: args.clientAppId, userId: receivedRefreshToken.userId };
     await receivedRefreshToken.remove();
 
     const refreshToken = await new RefreshTokenModel({
@@ -48,7 +48,7 @@ export default {
     }
 
     const token = createJwtToken(
-      { id: dataRefreshToken.userId, clientId: dataRefreshToken.clientId },
+      { id: dataRefreshToken.userId, clientAppId: dataRefreshToken.clientAppId },
       process.env.AUTH_SECRET,
       process.env.AUTH_TOKEN_EXPIRES
     );

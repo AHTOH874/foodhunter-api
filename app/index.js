@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(authentication);
-app.use('/graphql', cors(), graphqlHTTP(({ userId, clientId }) => ({
-  context: { userId, clientId },
+app.use('/graphql', cors(), graphqlHTTP(({ userId, clientApp, clientAppId }) => ({
+  context: { userId, clientApp, clientAppId },
   pretty: true,
   schema
 })));

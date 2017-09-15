@@ -1,9 +1,9 @@
 import { GraphQLNonNull, GraphQLID, GraphQLString } from 'graphql';
 
-import ClientModel from '../../models/ClientModel';
+import ClientAppModel from '../../models/ClientAppModel';
 import ClientType from './type';
 
-import { authenticated } from '../../lib/permissions';
+import { authUser } from '../../lib/permissions';
 
 export default {
     Client: {
@@ -18,11 +18,11 @@ export default {
                 type: new GraphQLNonNull(GraphQLString)
             }
         },
-        resolve: authenticated(async (root, args, options, info) => {
+        resolve: authUser(async (root, args) => {
             try{
-                return await ClientModel.findById(args.id);
+                return await ClientAppModel.findById(args.id);
             } catch(error) {
-                return new Error('Client not found');
+                return new Error('Client App not found');
             }
         })
     }
