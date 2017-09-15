@@ -1,23 +1,16 @@
 import { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLID } from 'graphql';
 
 export default new GraphQLObjectType({
-  name: 'User',
-  description: 'User',
+  name: 'Category',
   fields: {
     _id: {
       type: new GraphQLNonNull(GraphQLID)
     },
-    email: {
+    title: {
       type: new GraphQLNonNull(GraphQLString)
     },
-    username: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    name: {
-      type: GraphQLString
-    },
-    avatar: {
-      type: GraphQLString
+    parent_id: {
+      type: GraphQLID
     }
   }
 });
