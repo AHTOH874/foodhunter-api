@@ -22,7 +22,7 @@ export const authUser = (resolver) => (parent, args, context, info) => {
  * @param resolver
  */
 export const authClientApp = (resolver) => (parent, args, context, info) => {
-  if(context.clientApp){
+  if(context.clientApp || context.clientAppId){
     return resolver(parent, args, context, info);
   }
 
