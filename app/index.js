@@ -21,7 +21,7 @@ require('./lib/mongoose');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', (req, res) => res.send('api v1.0'));
+app.use('/', (req, res) => res.send(''));
 
 app.use(authentication);
 app.use('/graphql', cors(), graphqlHTTP(({ userId, clientApp, clientAppId }) => ({
@@ -32,4 +32,4 @@ app.use('/graphql', cors(), graphqlHTTP(({ userId, clientApp, clientAppId }) => 
 
 app.listen(process.env.PORT, () => {
   console.log(`Express Server is Running on ${process.env.PORT} port!`);
-})
+});
