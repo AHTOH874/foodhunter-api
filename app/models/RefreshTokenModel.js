@@ -5,7 +5,7 @@ const refreshTokenSchema = new Schema({
     type: String,
     required: true
   },
-  clientId: {
+  clientAppId: {
     type: String,
     required: true
   },

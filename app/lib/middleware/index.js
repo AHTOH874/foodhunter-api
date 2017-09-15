@@ -2,7 +2,7 @@ import { verifyJwtToken } from '../helpers/crypto';
 import ClientAppModel from '../../models/ClientAppModel';
 
 export const authentication = async (req, res, next) => {
-  const token = req.headers['Authorization'];
+  const token = req.headers['authorization'];
   const clientAppAccessToken = req.headers['client-app'];
 
   if(token){
@@ -12,9 +12,7 @@ export const authentication = async (req, res, next) => {
       req.clientAppId = decoded.clientAppId;
       req.userId = decoded.id;
     }
-  }
-
-  if(clientAppAccessToken){
+  } else if(clientAppAccessToken){
     const clientApp = await ClientAppModel.findOne({ accessToken: clientAppAccessToken });
     if(clientApp) req.clientApp = clientApp;
   }
