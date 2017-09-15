@@ -53,7 +53,7 @@ export default {
     const token = createJwtToken(
       { id: user._id, clientAppId: args.clientAppId },
       process.env.AUTH_SECRET,
-      process.env.AUTH_TOKEN_EXPIRES
+      Number(process.env.AUTH_TOKEN_EXPIRES)
     );
 
     return { token, refreshToken: refreshToken.token }
